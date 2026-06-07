@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Walimatulurus Iqbal & Khatijah</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Pinyon+Script&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#F5F0E8', // Main scroller wrapper background (warm cream)
+                            card: 'transparent',  // Card background (so background image shows through)
+                            primary: '#3D5A80', // Primary text color (steel navy blue)
+                            muted: '#6B7FA3',   // Muted text color (lighter blue-grey)
+                            dark: '#C5A55A',    // Accent gold
+                            deep: '#A68B3E',    // Darker gold
+                            black: '#EDE6DA'    // Body background (light parchment)
+                        },
+                        chocolate: {
+                            light: '#F5F0E8',
+                            DEFAULT: '#EDE6DA',
+                            dark: '#DDD5C7',
+                            deep: '#C9BFB0',
+                            black: '#EDE6DA'
+                        },
+                        gold: {
+                            light: '#E8D9A0',
+                            DEFAULT: '#C5A55A', // Warm Gold
+                            dark: '#A68B3E',
+                            brass: '#B8963F'
+                        },
+                        navy: {
+                            light: '#6B7FA3',
+                            DEFAULT: '#3D5A80',
+                            dark: '#2C4563',
+                            deep: '#1E3450'
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Amiri', 'serif'],
+                        cursive: ['Pinyon Script', 'Great Vibes', 'cursive'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(197, 165, 90, 0.25)',
+                        'gold-glow-lg': '0 0 25px rgba(197, 165, 90, 0.45)',
+                        'brand-glow': '0 10px 25px rgba(61, 90, 128, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar for inner card container */
+        .card-scroller::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .card-scroller::-webkit-scrollbar-track {
+            background: #EDE6DA;
+        }
+
+        .card-scroller::-webkit-scrollbar-thumb {
+            background: #C5A55A;
+            border-radius: 2px;
+        }
+
+        /* Custom Animations */
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 12s linear infinite;
+        }
+
+        @keyframes pulse-gold {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(197, 165, 90, 0.3);
+            }
+
+            50% {
+                transform: scale(1.02);
+                opacity: 0.95;
+                text-shadow: 0 0 16px rgba(197, 165, 90, 0.6);
+            }
+        }
+
+        .animate-pulse-gold {
+            animation: pulse-gold 3s ease-in-out infinite;
+        }
+
+        /* Card styles with 1.png and 2.png backgrounds */
+        .invitation-card {
+            background-image: url('2.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(61, 90, 128, 0.12);
+        }
+
+        .invitation-card-hero {
+            background-image: url('iqbal.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(61, 90, 128, 0.12);
+        }
+
+        .gate-door {
+            box-shadow: inset 0 0 40px rgba(61, 90, 128, 0.15);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-black font-serif text-brand-primary min-h-screen flex justify-center items-start overflow-y-auto select-none selection:bg-brand-dark selection:text-white">
+
+    <div
+        class="w-full max-w-[480px] h-[100dvh] bg-brand-light shadow-[0_0_50px_rgba(61,90,128,0.15)] relative flex flex-col overflow-hidden">
+
+        <div id="gateContainer"
+            class="absolute inset-0 z-50 flex overflow-hidden pointer-events-auto transition-opacity duration-[1200ms] ease-in-out">
+            <div id="leftGate"
+                class="w-1/2 h-full bg-[#F5F0E8] border-r border-gold/20 gate-door transition-transform duration-[1200ms] ease-in-out flex flex-col justify-center items-end pr-3">
+                <div class="opacity-10 pointer-events-none transform -rotate-90 origin-right translate-y-32">
+                    <span class="font-sans text-[10px] tracking-[0.4em] uppercase text-navy">WALIMATULURUS</span>
+                </div>
+            </div>
+            <div id="rightGate"
+                class="w-1/2 h-full bg-[#F5F0E8] border-l border-gold/20 gate-door transition-transform duration-[1200ms] ease-in-out flex flex-col justify-center items-start pl-3">
+                <div class="opacity-10 pointer-events-none transform rotate-90 origin-left translate-y-32">
+                    <span class="font-sans text-[10px] tracking-[0.4em] uppercase text-navy">WALIMATULURUS</span>
+                </div>
+            </div>
+
+            <div id="sealWrapper"
+                class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-[1000ms] z-50">
+                <div class="text-center mb-6 space-y-1 transform -translate-y-4">
+                    <span
+                        class="font-sans text-[9px] tracking-[0.3em] text-navy-dark uppercase block font-bold">Undangan
+                        Digital</span>
+                    <span class="font-cursive text-2xl tracking-wider text-gold block">Khatijah & Iqbal</span>
+                </div>
+
+                <button id="bukaButton" onclick="openGates()"
+                    class="w-24 h-24 rounded-full bg-gradient-to-br from-[#D4C28A] via-[#C5A55A] to-[#A68B3E] border-2 border-gold-light/40 shadow-[0_0_25px_rgba(197,165,90,0.5)] flex flex-col items-center justify-center transition-all duration-500 hover:scale-105 active:scale-95 group">
+                    <div
+                        class="w-[86px] h-[86px] rounded-full border border-gold-dark/30 flex flex-col items-center justify-center bg-white/10">
+                        <span class="font-cursive text-2xl text-white font-bold leading-none select-none">K & I</span>
+                        <span
+                            class="font-sans text-[7.5px] uppercase tracking-[0.2em] text-white font-black mt-1 animate-pulse select-none">BUKA</span>
+                    </div>
+                </button>
+
+                <div class="text-center mt-6 transform translate-y-4">
+                    <span class="font-serif text-[11px] text-navy/70">Sabtu, 8 Ogos 2026</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="mainContent"
+            class="w-full h-full overflow-y-auto card-scroller flex flex-col pb-[60px] bg-brand-light select-text">
+
+            <header
+                class="w-full bg-[#F5F0E8]/95 py-3 px-6 flex justify-between items-center border-b border-gold/25 shrink-0 backdrop-blur-sm">
+                <span class="font-cursive text-2xl text-gold tracking-wide">I & K</span>
+                <span class="font-sans text-xs tracking-[0.2em] text-navy font-bold uppercase">WALIMATULURUS</span>
+            </header>
+
+            <section id="hero-card"
+                class="w-full aspect-[1240/1748] invitation-card-hero flex flex-col justify-end p-10 text-center overflow-hidden shrink-0">
+                <div class="text-gold text-xs animate-bounce flex flex-col items-center justify-center gap-1 pb-4">
+                    <span class="font-sans text-[8px] tracking-widest uppercase text-navy-light font-bold">Skrol Ke
+                        Bawah</span>
+                    <span>▼</span>
+                </div>
+            </section>
+
+            <div class="flex items-center justify-center py-2 px-10 shrink-0">
+                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent to-gold"></div>
+                <div class="mx-3 text-gold text-xs">◆ ⚜ ◆</div>
+                <div class="h-[1px] w-24 bg-gradient-to-l from-transparent to-gold"></div>
+            </div>
+
+            <section id="undangan-card"
+                class="w-full aspect-[1240/1748] invitation-card flex flex-col justify-between p-10 text-center shrink-0">
+                <div></div>
+
+                <div
+                    class="space-y-6 max-w-[340px] mx-auto my-auto self-center bg-white/40 border border-gold/20 rounded-2xl p-5 shadow-sm backdrop-blur-sm">
+                    <span class="text-gold text-2xl">⚜</span>
+                    <p class="font-sans text-[9px] tracking-widest text-navy uppercase mb-2 font-bold">Undangan Majlis
+                    </p>
+
+                    <p class="font-serif text-xs text-navy leading-relaxed font-semibold">
+                        Dengan penuh kesyukuran ke hadrat Ilahi, kami menjemput Tuan / Puan / Encik / Cik ke majlis
+                        perkahwinan anakanda kami:
+                    </p>
+
+                    <div class="space-y-1.5 py-2">
+                        <h4 class="font-cursive text-2xl text-gold">Siti Nur Khatijah Binti Md Yusof</h4>
+                        <span class="font-sans text-[9px] text-navy-light uppercase tracking-wider font-bold">&</span>
+                        <h4 class="font-cursive text-2xl text-gold">Iqbal Hafizi Bin Mohamad Aris</h4>
+                    </div>
+
+                    <p class="font-serif text-xs text-navy leading-relaxed border-t border-gold/15 pt-4">
+                        Turut Mengundang Ibu Bapa / Penjaga:<br>
+                        <span class="font-serif text-sm font-bold text-navy-dark block mt-1">Alawiyah Binti
+                            Kamaruddin & Ayob Radzi Bin Kamaruddin</span>
+                        <span class="font-serif text-[11px] text-navy-light font-semibold">(Ibu & Bapa Saudara Pengantin
+                            Perempuan)</span>
+                    </p>
+                </div>
+            </section>
+
+            <div class="flex items-center justify-center py-2 px-10 shrink-0">
+                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent to-brand-dark"></div>
+                <div class="mx-3 text-gold text-xs">◆ ⚜ ◆</div>
+                <div class="h-[1px] w-24 bg-gradient-to-l from-transparent to-brand-dark"></div>
+            </div>
+
+            <section id="itinerary-card"
+                class="w-full aspect-[1240/1748] invitation-card flex flex-col justify-between p-10 text-center shrink-0">
+                <div></div>
+
+                <div class="space-y-5 my-auto self-center w-full max-w-[350px]">
+                    <div class="bg-white/40 border border-gold/20 rounded-xl p-4 shadow-sm backdrop-blur-sm">
+                        <span
+                            class="font-sans text-[8.5px] tracking-[0.2em] text-navy uppercase mb-2 font-bold block">MENGHITUNG
+                            HARI</span>
+                        <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
+                            <div class="bg-[#F5F0E8]/80 rounded-lg p-2 border border-gold/20 shadow-sm">
+                                <span id="cd-days" class="font-sans text-lg font-bold text-gold block">00</span>
+                                <span
+                                    class="font-sans text-[8.5px] uppercase tracking-wider text-navy-light font-semibold">Hari</span>
+                            </div>
+                            <div class="bg-[#F5F0E8]/80 rounded-lg p-2 border border-gold/20 shadow-sm">
+                                <span id="cd-hours" class="font-sans text-lg font-bold text-gold block">00</span>
+                                <span
+                                    class="font-sans text-[8.5px] uppercase tracking-wider text-navy-light font-semibold">Jam</span>
+                            </div>
+                            <div class="bg-[#F5F0E8]/80 rounded-lg p-2 border border-gold/20 shadow-sm">
+                                <span id="cd-mins" class="font-sans text-lg font-bold text-gold block">00</span>
+                                <span
+                                    class="font-sans text-[8.5px] uppercase tracking-wider text-navy-light font-semibold">Minit</span>
+                            </div>
+                            <div class="bg-[#F5F0E8]/80 rounded-lg p-2 border border-gold/20 shadow-sm">
+                                <span id="cd-secs" class="font-sans text-lg font-bold text-gold block">00</span>
+                                <span
+                                    class="font-sans text-[8.5px] uppercase tracking-wider text-navy-light font-semibold">Saat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div></div>
+            </section>
+
+            <div class="flex items-center justify-center py-2 px-10 shrink-0">
+                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent to-brand-dark"></div>
+                <div class="mx-3 text-gold text-xs">◆ ⚜ ◆</div>
+                <div class="h-[1px] w-24 bg-gradient-to-l from-transparent to-brand-dark"></div>
+            </div>
+
+            <section id="guestbook-card"
+                class="w-full aspect-[1240/1748] invitation-card flex flex-col justify-between p-10 text-center shrink-0">
+                <div></div>
+
+                <div
+                    class="w-full max-w-[360px] mx-auto bg-white/40 border border-gold/20 rounded-2xl p-5 shadow-sm backdrop-blur-sm text-left space-y-3 my-auto self-center">
+                    <div class="text-center border-b border-gold/15 pb-2 space-y-2">
+                        <span class="font-cursive text-2xl text-gold block">Ucapan Tetamu</span>
+                        <span id="wishesCount"
+                            class="font-sans text-[8.5px] tracking-[0.2em] text-navy uppercase font-bold block">0
+                            UCAPAN</span>
+                        <div class="flex justify-center gap-4">
+                            <div class="flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>
+                                <span id="hadirCount" class="font-sans text-[8px] text-green-700 font-bold uppercase">0
+                                    Hadir</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-red-400 inline-block"></span>
+                                <span id="tidakHadirCount"
+                                    class="font-sans text-[8px] text-red-500 font-bold uppercase">0 Tidak Hadir</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="wishesList" class="space-y-2.5 max-h-[260px] overflow-y-auto pr-1 card-scroller">
+                    </div>
+                </div>
+
+                <div class="pb-4 text-center">
+                    <span class="font-sans text-[8px] tracking-[0.2em] text-navy-light uppercase font-bold">Terima Kasih
+                        Kerana Meraikan Kami</span>
+                </div>
+            </section>
+
+        </div>
+
+
+        <footer
+            class="absolute bottom-0 left-0 right-0 z-40 bg-[#F5F0E8]/95 border-t border-gold/25 py-2 px-1 flex justify-around items-center text-center shadow-[0_-2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm">
+            <button onclick="toggleMusic()"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span id="musicIcon" class="text-base mb-0.5 select-none">🔇</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">Muzik</span>
+            </button>
+
+            <button onclick="toggleDrawer('drawer-calendar')"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span class="text-base mb-0.5 select-none">📅</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">Kalendar</span>
+            </button>
+
+            <button onclick="toggleDrawer('drawer-salam')"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span class="text-base mb-0.5 select-none">💝</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">Salam</span>
+            </button>
+
+            <button onclick="toggleDrawer('drawer-lokasi')"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span class="text-base mb-0.5 select-none">📍</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">Lokasi</span>
+            </button>
+
+            <button onclick="toggleDrawer('drawer-hubungi')"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span class="text-base mb-0.5 select-none">📞</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">Hubungi</span>
+            </button>
+
+            <button id="nav-rsvp-btn" onclick="toggleDrawer('drawer-rsvp')"
+                class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
+                <span class="text-base mb-0.5 select-none">💌</span>
+                <span class="font-sans text-[8px] uppercase tracking-wider font-bold text-navy-light">RSVP</span>
+            </button>
+        </footer>
+
+
+        <div id="drawerBackdrop"
+            class="absolute inset-0 bg-black/45 z-30 opacity-0 pointer-events-none transition-all duration-300"
+            onclick="closeAllDrawers()"></div>
+
+        <div id="drawer-calendar"
+            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
+            <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
+            <span class="font-cursive text-2xl text-gold block">Simpan Tarikh</span>
+            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Add to Calendar
+            </h3>
+
+            <div class="grid grid-cols-2 gap-4 max-w-[320px] mx-auto pb-4">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Walimatulurus+Iqbal+%26+Khatijah&dates=20270112T040000Z/20270112T090000Z&details=Majlis+Walimatulurus+Iqbal+%26+Khatijah.&location=Dewan+Al-Khawarizmi,+SM+Tengku+Intan+Zaharah,+23000+Dungun,+Terengganu"
+                    target="_blank"
+                    class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
+                    <span
+                        class="text-3xl text-gold mb-2 group-hover:scale-110 transition-transform duration-200 select-none">📅</span>
+                    <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Google</span>
+                </a>
+                <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Walimatulurus%20Iqbal%20%26%20Khatijah%0ADTSTART:20270112T120000%0ADTEND:20270112T170000%0ALOCATION:Dewan%20Al-Khawarizmi%2C%20SM%20Tengku%20Intan%20Zaharah%2C%20Dungun%20Terengganu%0ADESCRIPTION:Walimatulurus%20Iqbal%20%26%20Khatijah%0AEND:VEVENT%0AEND:VCALENDAR"
+                    download="walimatulurus-iqbal-khatijah.ics"
+                    class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
+                    <span
+                        class="text-3xl text-gold mb-2 group-hover:scale-110 transition-transform duration-200 select-none">🍏</span>
+                    <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Apple iCal</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="drawer-salam"
+            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
+            <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
+            <span class="font-cursive text-2xl text-gold block">Salam Kasih</span>
+            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-2 font-bold">Salam Kaut
+                Digital</h3>
+
+            <div
+                class="space-y-2.5 max-w-[360px] mx-auto text-left overflow-y-auto max-h-[300px] pr-1 card-scroller pb-4">
+                <div
+                    class="bg-white/50 border border-gold/20 rounded-xl p-3 flex flex-col items-center text-center space-y-1.5 shadow-sm">
+                    <div
+                        class="w-36 h-36 bg-white p-1.5 rounded border border-gold/25 flex items-center justify-center">
+                        <img src="image.png" alt="DuitNow QR Code" class="w-full h-full object-contain rounded">
+                    </div>
+                    <span class="font-serif text-[10px] text-navy-light font-semibold">Imbas Kod QR DuitNow</span>
+                </div>
+
+                <div
+                    class="bg-white/50 border border-gold/20 rounded-xl p-3 flex justify-between items-center shadow-sm">
+                    <div>
+                        <span class="font-sans text-[8px] uppercase tracking-wider text-gold-dark font-bold">RHB
+                            (Pengantin Perempuan)</span>
+                        <p class="font-sans text-xs font-semibold text-navy tracking-widest mt-0.5">25602600020940</p>
+                        <p class="font-sans text-[9px] text-navy-light font-bold uppercase">Siti Nur Khatijah</p>
+                    </div>
+                    <button onclick="copyToClipboard('25602600020940', 'btn-bank1')" id="btn-bank1"
+                        class="px-3 py-1 bg-white border border-gold/30 rounded text-[9px] font-sans uppercase tracking-wider text-gold-dark font-semibold transition-all duration-200 hover:bg-gold hover:text-white">
+                        Salin
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="drawer-lokasi"
+            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
+            <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
+            <span class="font-cursive text-2xl text-gold block">Lokasi Majlis</span>
+            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Location &
+                Navigation</h3>
+
+            <div class="grid grid-cols-2 gap-4 max-w-[320px] mx-auto pb-4">
+                <a href="https://maps.app.goo.gl/o7udwwKMxSPPkfxs9" target="_blank"
+                    class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
+                    <span
+                        class="text-3xl text-gold mb-2 group-hover:scale-110 transition-transform duration-200 select-none">🗺️</span>
+                    <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Google Maps</span>
+                </a>
+                <a href="https://ul.waze.com/ul?place=EkNKYWxhbiBLYW1wdW5nIENoYW5na2F0IEt1cm5pYSwgMzMwMDAgS3VhbGEgS2FuZ3NhciwgUGVyYWssIE1hbGF5c2lhIi4qLAoUChIJp8lDK6a9yjERIxTPH2kQxHASFAoSCdVidmzovMoxEcW6H67gLLUk&ll=4.76147100%2C100.94720880&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
+                    target="_blank"
+                    class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
+                    <span
+                        class="text-3xl text-gold mb-2 group-hover:scale-110 transition-transform duration-200 select-none">🚙</span>
+                    <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Waze</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="drawer-hubungi"
+            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
+            <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
+            <span class="font-cursive text-2xl text-gold block">Hubungi Kami</span>
+            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-2 font-bold">Contact Persons
+            </h3>
+
+            <div class="space-y-2.5 max-w-[360px] mx-auto overflow-y-auto max-h-[300px] pr-1 card-scroller pb-4">
+                <div class="flex items-center justify-between p-3 bg-white/50 border border-gold/20 rounded-xl">
+                    <div class="text-left">
+                        <h4 class="font-serif text-sm font-bold text-navy">Fakhrin</h4>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/60135091250?text=Hi%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20perkahwinan%20Iqbal%20%26%20Khatijah"
+                            target="_blank"
+                            class="w-7 h-7 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-xs text-green-600 hover:bg-green-500 hover:text-white transition-all duration-200 select-none">
+                            💬
+                        </a>
+                        <a href="tel:+60135091250"
+                            class="w-7 h-7 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-xs text-gold-dark hover:bg-gold hover:text-white transition-all duration-200 select-none">
+                            📞
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between p-3 bg-white/50 border border-gold/20 rounded-xl">
+                    <div class="text-left">
+                        <h4 class="font-serif text-sm font-bold text-navy">Ain</h4>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/601137080360?text=Hi%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20perkahwinan%20Iqbal%20%26%20Khatijah"
+                            target="_blank"
+                            class="w-7 h-7 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-xs text-green-600 hover:bg-green-500 hover:text-white transition-all duration-200 select-none">
+                            💬
+                        </a>
+                        <a href="tel:+601137080360"
+                            class="w-7 h-7 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-xs text-gold-dark hover:bg-gold hover:text-white transition-all duration-200 select-none">
+                            📞
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between p-3 bg-white/50 border border-gold/20 rounded-xl">
+                    <div class="text-left">
+                        <h4 class="font-serif text-sm font-bold text-navy">Emi</h4>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/60194538243?text=Hi%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20perkahwinan%20Iqbal%20%26%20Khatijah"
+                            target="_blank"
+                            class="w-7 h-7 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-xs text-green-600 hover:bg-green-500 hover:text-white transition-all duration-200 select-none">
+                            💬
+                        </a>
+                        <a href="tel:+60194538243"
+                            class="w-7 h-7 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-xs text-gold-dark hover:bg-gold hover:text-white transition-all duration-200 select-none">
+                            📞
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="drawer-rsvp"
+            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-5 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-left space-y-3">
+            <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-1.5 mb-1"></div>
+            <div class="text-center">
+                <span class="font-cursive text-2xl text-gold block">Kehadiran (RSVP)</span>
+                <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-3 font-bold">RSVP Form
+                </h3>
+            </div>
+
+            <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)"
+                class="space-y-2.5 max-w-[360px] mx-auto overflow-y-auto max-h-[310px] pr-1 card-scroller pb-4">
+                <div>
+                    <label class="block font-sans text-[8.5px] tracking-wider text-navy uppercase font-bold mb-0.5">Nama
+                        Tetamu *</label>
+                    <input type="text" id="guestName" required
+                        class="w-full bg-white/60 border border-gold/30 rounded-lg py-1.5 px-3 text-xs text-navy focus:outline-none focus:border-gold font-sans font-semibold">
+                </div>
+                <div>
+                    <label
+                        class="block font-sans text-[8.5px] tracking-wider text-navy uppercase font-bold mb-0.5">Nombor
+                        Telefon *</label>
+                    <input type="text" id="guestPhone" required
+                        class="w-full bg-white/60 border border-gold/30 rounded-lg py-1.5 px-3 text-xs text-navy focus:outline-none focus:border-gold font-sans font-semibold"
+                        placeholder="e.g. 0123456789">
+                </div>
+                <div>
+                    <label
+                        class="block font-sans text-[8.5px] tracking-wider text-navy uppercase font-bold mb-0.5">Kehadiran</label>
+                    <select id="attendance" onchange="togglePaxField(this.value)"
+                        class="w-full bg-white/60 border border-gold/30 rounded-lg py-1.5 px-3 text-xs text-navy focus:outline-none focus:border-gold font-sans cursor-pointer font-semibold">
+                        <option value="hadir">Hadir</option>
+                        <option value="tidak_hadir">Tidak Hadir</option>
+                    </select>
+                </div>
+                <div id="paxFieldContainer">
+                    <label
+                        class="block font-sans text-[8.5px] tracking-wider text-navy uppercase font-bold mb-0.5">Bilangan
+                        Pax</label>
+                    <select id="pax"
+                        class="w-full bg-white/60 border border-gold/30 rounded-lg py-1.5 px-3 text-xs text-navy focus:outline-none focus:border-gold font-sans cursor-pointer font-semibold">
+                        <option value="1">1 Orang</option>
+                        <option value="2" selected>2 Orang</option>
+                        <option value="3">3 Orang</option>
+                        <option value="4">4 Orang</option>
+                        <option value="5">5 Orang</option>
+                    </select>
+                </div>
+                <div>
+                    <label
+                        class="block font-sans text-[8.5px] tracking-wider text-navy uppercase font-bold mb-0.5">Ucapan
+                        & Doa (jika ada)</label>
+                    <textarea id="wishes" rows="2"
+                        class="w-full bg-white/60 border border-gold/30 rounded-lg py-1 px-3 text-xs text-navy focus:outline-none focus:border-gold font-sans resize-none font-semibold"
+                        placeholder="Tulis ucapan anda..."></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pt-1">
+                    <button type="submit"
+                        class="py-2 bg-gradient-to-r from-gold/80 to-gold text-white font-semibold rounded-lg text-[10px] font-sans uppercase tracking-widest hover:shadow-gold-glow transition-all duration-300">
+                        Hantar
+                    </button>
+                    <button type="button" onclick="closeAllDrawers()"
+                        class="py-2 border border-gold/40 hover:border-gold text-navy font-semibold rounded-lg text-[10px] font-sans uppercase tracking-widest transition-all duration-300">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="Jaz - Bersamamu (Official Lyric Video).mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="rsvpToast"
+        class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-[#F5F0E8] border border-gold shadow-brand-glow p-5 rounded-2xl max-w-[300px] text-center space-y-2 opacity-0 scale-90 pointer-events-none transition-all duration-300">
+        <span class="text-gold text-3xl select-none">⚜</span>
+        <h4 class="font-serif text-base text-navy font-bold">Terima Kasih!</h4>
+        <p class="font-serif text-xs text-navy-light font-semibold">Ucapan & maklum balas kehadiran anda telah berjaya
+            dihantar dan dipaparkan dalam buku ucapan.</p>
+        <button onclick="closeRSVPToast()"
+            class="mt-2 px-4 py-1.5 bg-gradient-to-r from-gold/80 to-gold text-white font-semibold text-[10px] font-sans uppercase tracking-wider rounded-lg shadow">Tutup</button>
+    </div>
+
+    <script>
+        // ==================== AUTO-INJECT CORNER BORDERS ====================
+        const injectCornerBorders = () => {
+            return; // Disabled for chocolate brown template backgrounds which have built-in borders
+        };
+
+        // Run border injection on load
+        window.addEventListener("DOMContentLoaded", injectCornerBorders);
+
+        // ==================== COVER GATE ANIMATION ====================
+        const openGates = () => {
+            const leftGate = document.getElementById("leftGate");
+            const rightGate = document.getElementById("rightGate");
+            const sealWrapper = document.getElementById("sealWrapper");
+            const gateContainer = document.getElementById("gateContainer");
+
+            // Play music instantly
+            playMusic();
+
+            // Slide doors apart
+            leftGate.style.transform = "translateX(-100%)";
+            rightGate.style.transform = "translateX(100%)";
+
+            // Fade and shrink seal
+            sealWrapper.style.opacity = "0";
+            sealWrapper.style.transform = "scale(0.5)";
+
+            // Remove gates from focus
+            setTimeout(() => {
+                gateContainer.style.display = "none";
+            }, 1200);
+        };
+
+
+        // ==================== DYNAMIC COUNTDOWN TIMER ====================
+        // Changed target date to 8 Ogos 2026
+        const weddingDate = new Date("Aug 8, 2026 12:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference < 0) {
+                document.getElementById("cd-days").innerText = "00";
+                document.getElementById("cd-hours").innerText = "00";
+                document.getElementById("cd-mins").innerText = "00";
+                document.getElementById("cd-secs").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("cd-days").innerText = String(days).padStart(2, '0');
+            document.getElementById("cd-hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("cd-mins").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("cd-secs").innerText = String(seconds).padStart(2, '0');
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        // ==================== BACKGROUND AUDIO CONTROLS ====================
+        const bgMusic = document.getElementById("bgMusic");
+        const musicIcon = document.getElementById("musicIcon");
+        let isPlaying = false;
+
+        const playMusic = () => {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    musicIcon.innerText = "🎵";
+                    musicIcon.classList.add("animate-spin-slow");
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("Audio autoplay was blocked by policy, needs user interaction.", err);
+                });
+            }
+        };
+
+        const toggleMusic = () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.innerText = "🔇";
+                musicIcon.classList.remove("animate-spin-slow");
+                isPlaying = false;
+            } else {
+                musicIcon.innerText = "🎵";
+                musicIcon.classList.add("animate-spin-slow");
+                isPlaying = true;
+                bgMusic.play().catch(err => {
+                    console.log("Play failed: ", err);
+                    musicIcon.innerText = "🔇";
+                    musicIcon.classList.remove("animate-spin-slow");
+                    isPlaying = false;
+                });
+            }
+        };
+
+
+        // ==================== BOTTOM SHEET DRAWER SYSTEM ====================
+        const openDrawer = (drawerId) => {
+            const drawer = document.getElementById(drawerId);
+            const backdrop = document.getElementById("drawerBackdrop");
+
+            // Close all drawers first
+            closeAllDrawers(false);
+
+            // Show new drawer
+            drawer.classList.remove("translate-y-full", "opacity-0", "pointer-events-none");
+            drawer.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+
+            // Show backdrop
+            backdrop.classList.remove("opacity-0", "pointer-events-none");
+            backdrop.classList.add("opacity-100", "pointer-events-auto");
+        };
+
+        const closeAllDrawers = (hideBackdrop = true) => {
+            const drawers = ["drawer-calendar", "drawer-salam", "drawer-lokasi", "drawer-hubungi", "drawer-rsvp"];
+            drawers.forEach(id => {
+                const drawer = document.getElementById(id);
+                drawer.classList.add("translate-y-full", "opacity-0", "pointer-events-none");
+                drawer.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
+            });
+
+            if (hideBackdrop) {
+                const backdrop = document.getElementById("drawerBackdrop");
+                backdrop.classList.add("opacity-0", "pointer-events-none");
+                backdrop.classList.remove("opacity-100", "pointer-events-auto");
+            }
+        };
+
+        const toggleDrawer = (drawerId) => {
+            const drawer = document.getElementById(drawerId);
+            const isOpen = drawer.classList.contains("translate-y-0");
+            if (isOpen) {
+                closeAllDrawers();
+            } else {
+                openDrawer(drawerId);
+            }
+        };
+
+
+        // ==================== RSVP CONDITIONAL FIELD ====================
+        const togglePaxField = (status) => {
+            const container = document.getElementById("paxFieldContainer");
+            const paxSelect = document.getElementById("pax");
+            if (status === "tidak_hadir") {
+                container.style.opacity = "0";
+                container.style.pointerEvents = "none";
+                paxSelect.removeAttribute("required");
+            } else {
+                container.style.opacity = "1";
+                container.style.pointerEvents = "auto";
+                paxSelect.setAttribute("required", "required");
+            }
+        };
+
+
+        // ==================== LOCALSTORAGE WISHES GUESTBOOK ====================
+        // Removed pre-seeded dummy wishes data
+        const seedWishes = () => {
+            if (!localStorage.getItem("weddingWishes")) {
+                const initialWishes = [];
+                localStorage.setItem("weddingWishes", JSON.stringify(initialWishes));
+            }
+        };
+
+        const renderWishes = () => {
+            const listEl = document.getElementById("wishesList");
+            const countEl = document.getElementById("wishesCount");
+            const hadirEl = document.getElementById("hadirCount");
+            const tidakHadirEl = document.getElementById("tidakHadirCount");
+            const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
+
+            const hadirCount = savedWishes.filter(w => w.attendance === "hadir").length;
+            const tidakHadirCount = savedWishes.filter(w => w.attendance !== "hadir").length;
+            const totalPax = savedWishes.filter(w => w.attendance === "hadir").reduce((sum, w) => {
+                const paxNum = parseInt(w.pax) || 0;
+                return sum + paxNum;
+            }, 0);
+
+            countEl.innerText = `${savedWishes.length} UCAPAN`;
+            hadirEl.innerText = `${hadirCount} Hadir (${totalPax} pax)`;
+            tidakHadirEl.innerText = `${tidakHadirCount} Tidak Hadir`;
+
+            listEl.innerHTML = savedWishes.map(w => `
+                <div class="bg-white/50 border border-gold/20 rounded-lg p-3 space-y-1 text-left transition-all duration-300 hover:border-gold/40 shadow-sm">
+                    <div class="flex justify-between items-center border-b border-gold/10 pb-1 select-none">
+                        <span class="font-sans text-[10px] font-bold text-navy">${w.name}</span>
+                        <span class="font-sans text-[8px] ${w.attendance === "hadir" ? 'text-green-700' : 'text-red-500'} font-semibold">${w.attendance === "hadir" ? `Hadir (${w.pax})` : "Tidak Hadir"}</span>
+                    </div>
+                    <p class="font-serif text-xs text-navy-light italic font-medium">"${w.text}"</p>
+                </div>
+            `).join("");
+        };
+
+        const handleRSVPSubmit = (e) => {
+            e.preventDefault();
+            const guestName = document.getElementById("guestName").value;
+            const guestPhone = document.getElementById("guestPhone").value;
+            const attendance = document.getElementById("attendance").value;
+            const pax = document.getElementById("pax").value;
+            const wishesText = document.getElementById("wishes").value;
+
+            // Save new guest wish
+            const newWish = {
+                name: guestName,
+                attendance: attendance,
+                pax: attendance === "hadir" ? `${pax} orang` : "Tidak Hadir",
+                text: wishesText || "Selamat pengantin baru, moga dikurniakan kebahagiaan berpanjangan."
+            };
+
+            const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
+            savedWishes.unshift(newWish);
+            localStorage.setItem("weddingWishes", JSON.stringify(savedWishes));
+
+            // Close drawers
+            closeAllDrawers();
+
+            // Refresh guesses list
+            renderWishes();
+
+            // Reset form
+            document.getElementById("rsvpForm").reset();
+            togglePaxField("hadir");
+
+            // Show Toast Success
+            const toast = document.getElementById("rsvpToast");
+            toast.style.opacity = "1";
+            toast.style.pointerEvents = "auto";
+            toast.style.transform = "translate(-50%, 0) scale(1)";
+        };
+
+        const closeRSVPToast = () => {
+            const toast = document.getElementById("rsvpToast");
+            toast.style.opacity = "0";
+            toast.style.pointerEvents = "none";
+            toast.style.transform = "translate(-50%, 0) scale(0.9)";
+        };
+
+        // Initialize guestbook
+        seedWishes();
+        renderWishes();
+
+
+        // ==================== CLIPBOARD COPY FUNCTIONALITY ====================
+        const copyToClipboard = (text, btnId) => {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById(btnId);
+                const originalText = btn.innerText;
+
+                btn.innerText = "Tersalin ✓";
+                btn.style.backgroundColor = "rgba(61, 90, 128, 0.15)";
+                btn.style.borderColor = "#3D5A80";
+                btn.style.color = "#1B3358";
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "transparent";
+                    btn.style.borderColor = "rgba(133, 178, 214, 0.5)";
+                    btn.style.color = "#3D5A80";
+                }, 2000);
+            }).catch(err => {
+                console.error("Gagal menyalin akaun: ", err);
+            });
+        };
+    </script>
+</body>
+
+</html>
