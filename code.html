@@ -153,10 +153,12 @@
         .mobile-footer {
             padding-bottom: calc(env(safe-area-inset-bottom) + 8px) !important;
         }
+
         .mobile-drawer {
             bottom: calc(env(safe-area-inset-bottom) + 56px) !important;
             max-height: calc(85dvh - env(safe-area-inset-bottom)) !important;
         }
+
         .mobile-content {
             padding-bottom: calc(env(safe-area-inset-bottom) + 72px) !important;
         }
@@ -394,25 +396,29 @@
 
         <div id="drawerBackdrop"
             class="absolute inset-0 bg-black/45 z-30 opacity-0 pointer-events-none transition-all duration-300"
-                  <div id="drawer-calendar"
+            onclick="closeAllDrawers()"></div>
+
+        <div id="drawer-calendar"
             class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
             <span class="font-cursive text-2xl text-gold block">Simpan Tarikh</span>
-            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Add to Calendar</h3>
+            <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Add to Calendar
+            </h3>
 
             <div class="grid grid-cols-2 gap-4 max-w-[320px] mx-auto pb-4">
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Walimatulurus+Iqbal+%26+Khatijah&dates=20260808T030000Z/20260808T080000Z&details=Majlis+Walimatulurus+Iqbal+%26+Khatijah.&location=Lot+307,+Kampung+Changkat+Kurnia,+Bukit+Chandan,+33000,+Kuala+Kangsar,+Perak"
                     target="_blank"
                     class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
-                    <img src="google_cal_icon.png" alt="Google Calendar" class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
+                    <img src="google_cal_icon.png" alt="Google Calendar"
+                        class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
                     <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Google</span>
                 </a>
-                <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Walimatulurus%20Iqbal%20%26%20Khatijah%0ADTSTART:20260808T110000%0ADTEND:20260808T160000%0ALOCATION:Lot%20307%2C%20Kampung%20Changkat%20Kurnia%2C%20Bukit%20Chandan%2C%2033000%2C%20Kuala%20Kangsar%2C%20Perak%0ADESCRIPTION:Walimatulurus%20Iqbal%20%26%20Khatijah%0AEND:VEVENT%0AEND:VCALENDAR"
-                    download="walimatulurus-iqbal-khatijah.ics"
+                <button onclick="downloadICS()"
                     class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
-                    <img src="apple_cal_icon.png" alt="Apple iCal" class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
+                    <img src="apple_cal_icon.png" alt="Apple iCal"
+                        class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
                     <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Apple iCal</span>
-                </a>
+                </button>
             </div>
         </div>
 
@@ -460,13 +466,15 @@
             <div class="grid grid-cols-2 gap-4 max-w-[320px] mx-auto pb-4">
                 <a href="https://maps.app.goo.gl/o7udwwKMxSPPkfxs9" target="_blank"
                     class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
-                    <img src="maps_icon.png" alt="Google Maps" class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
+                    <img src="maps_icon.png" alt="Google Maps"
+                        class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
                     <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Google Maps</span>
                 </a>
                 <a href="https://ul.waze.com/ul?place=EkNKYWxhbiBLYW1wdW5nIENoYW5na2F0IEt1cm5pYSwgMzMwMDAgS3VhbGEgS2FuZ3NhciwgUGVyYWssIE1hbGF5c2lhIi4qLAoUChIJp8lDK6a9yjERIxTPH2kQxHASFAoSCdVidmzovMoxEcW6H67gLLUk&ll=4.76147100%2C100.94720880&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
                     target="_blank"
                     class="flex flex-col items-center p-4 bg-white/50 border border-gold/25 hover:border-gold rounded-2xl transition-all duration-300 group">
-                    <img src="waze_icon.png" alt="Waze" class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
+                    <img src="waze_icon.png" alt="Waze"
+                        class="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200 object-contain">
                     <span class="font-sans text-[9px] uppercase tracking-wider text-navy font-bold">Waze</span>
                 </a>
             </div>
@@ -928,6 +936,33 @@
 
         // Initialize guestbook
         initGuestbook();
+
+
+        // ==================== APPLE ICAL GENERATION & DOWNLOAD ====================
+        const downloadICS = () => {
+            const icsData = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "BEGIN:VEVENT",
+                "CLASS:PUBLIC",
+                "DESCRIPTION:Majlis Walimatulurus Iqbal & Khatijah",
+                "DTSTART:20260808T110000",
+                "DTEND:20260808T160000",
+                "LOCATION:Lot 307, Kampung Changkat Kurnia, Bukit Chandan, 33000, Kuala Kangsar, Perak",
+                "SUMMARY:Walimatulurus Iqbal & Khatijah",
+                "TRANSP:OPAQUE",
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\r\n");
+
+            const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "walimatulurus-iqbal-khatijah.ics";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
 
 
         // ==================== CLIPBOARD COPY FUNCTIONALITY ====================
