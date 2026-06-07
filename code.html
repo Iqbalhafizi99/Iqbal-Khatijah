@@ -135,7 +135,22 @@
         .gate-door {
             box-shadow: inset 0 0 40px rgba(61, 90, 128, 0.15);
         }
+
+        /* Mobile Responsive Safe Area Enhancements */
+        .mobile-footer {
+            padding-bottom: calc(env(safe-area-inset-bottom) + 8px) !important;
+        }
+        .mobile-drawer {
+            bottom: calc(env(safe-area-inset-bottom) + 56px) !important;
+            max-height: calc(85dvh - env(safe-area-inset-bottom)) !important;
+        }
+        .mobile-content {
+            padding-bottom: calc(env(safe-area-inset-bottom) + 72px) !important;
+        }
     </style>
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body
@@ -186,13 +201,9 @@
 
 
         <div id="mainContent"
-            class="w-full h-full overflow-y-auto card-scroller flex flex-col pb-[60px] bg-brand-light select-text">
+            class="w-full h-full overflow-y-auto card-scroller flex flex-col mobile-content bg-brand-light select-text">
 
-            <header
-                class="w-full bg-[#F5F0E8]/95 py-3 px-6 flex justify-between items-center border-b border-gold/25 shrink-0 backdrop-blur-sm">
-                <span class="font-cursive text-2xl text-gold tracking-wide">I & K</span>
-                <span class="font-sans text-xs tracking-[0.2em] text-navy font-bold uppercase">WALIMATULURUS</span>
-            </header>
+
 
             <section id="hero-card"
                 class="w-full aspect-[1240/1748] invitation-card-hero flex flex-col justify-end p-10 text-center overflow-hidden shrink-0">
@@ -329,7 +340,7 @@
 
 
         <footer
-            class="absolute bottom-0 left-0 right-0 z-40 bg-[#F5F0E8]/95 border-t border-gold/25 py-2 px-1 flex justify-around items-center text-center shadow-[0_-2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm">
+            class="absolute bottom-0 left-0 right-0 z-40 bg-[#F5F0E8]/95 border-t border-gold/25 py-2 px-1 flex justify-around items-center text-center shadow-[0_-2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm mobile-footer">
             <button onclick="toggleMusic()"
                 class="flex flex-col items-center justify-center flex-1 py-1 text-gold hover:text-navy transition-colors duration-200">
                 <span id="musicIcon" class="text-base mb-0.5 select-none">🔇</span>
@@ -373,7 +384,7 @@
             onclick="closeAllDrawers()"></div>
 
         <div id="drawer-calendar"
-            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
+            class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
             <span class="font-cursive text-2xl text-gold block">Simpan Tarikh</span>
             <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Add to Calendar
@@ -398,7 +409,7 @@
         </div>
 
         <div id="drawer-salam"
-            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
+            class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
             <span class="font-cursive text-2xl text-gold block">Salam Kasih</span>
             <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-2 font-bold">Salam Kaut
@@ -432,7 +443,7 @@
         </div>
 
         <div id="drawer-lokasi"
-            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
+            class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-5">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
             <span class="font-cursive text-2xl text-gold block">Lokasi Majlis</span>
             <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-4 font-bold">Location &
@@ -456,7 +467,7 @@
         </div>
 
         <div id="drawer-hubungi"
-            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
+            class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-6 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-center space-y-4">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-2 mb-2"></div>
             <span class="font-cursive text-2xl text-gold block">Hubungi Kami</span>
             <h3 class="font-sans text-[9px] tracking-[0.2em] text-navy uppercase -mt-2 mb-2 font-bold">Contact Persons
@@ -517,7 +528,7 @@
         </div>
 
         <div id="drawer-rsvp"
-            class="absolute bottom-[56px] left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-5 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-left space-y-3">
+            class="absolute mobile-drawer left-0 right-0 bg-[#F5F0E8] border-t-2 border-gold rounded-t-[2rem] z-30 p-5 shadow-2xl transition-all duration-500 translate-y-full opacity-0 pointer-events-none text-left space-y-3">
             <div class="w-12 h-1 bg-gold/30 rounded-full mx-auto -mt-1.5 mb-1"></div>
             <div class="text-center">
                 <span class="font-cursive text-2xl text-gold block">Kehadiran (RSVP)</span>
@@ -762,34 +773,54 @@
         };
 
 
-        // ==================== LOCALSTORAGE WISHES GUESTBOOK ====================
-        // Removed pre-seeded dummy wishes data
-        const seedWishes = () => {
-            if (!localStorage.getItem("weddingWishes")) {
-                const initialWishes = [];
-                localStorage.setItem("weddingWishes", JSON.stringify(initialWishes));
-            }
+        // ==================== FIREBASE RSVP & GUESTBOOK ====================
+        // TO USE FIREBASE: Replace the values below with your Firebase project configuration
+        // You can find this in your Firebase Console: Project Settings > General > Your apps
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
-        const renderWishes = () => {
+        let db = null;
+        let useFirebase = false;
+
+        // Check if config has been customized
+        if (typeof firebase !== 'undefined' && firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+            try {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.firestore();
+                useFirebase = true;
+                console.log("Firebase initialized successfully! RSVPs will sync with Firestore.");
+            } catch (error) {
+                console.error("Firebase initialization failed, falling back to LocalStorage:", error);
+            }
+        } else {
+            console.warn("Firebase config is not set. RSVP will run in LocalStorage fallback mode. Please update firebaseConfig in code.html with your credentials.");
+        }
+
+        // Render wishes list and attendance counters
+        const renderWishesList = (wishesArray) => {
             const listEl = document.getElementById("wishesList");
             const countEl = document.getElementById("wishesCount");
             const hadirEl = document.getElementById("hadirCount");
             const tidakHadirEl = document.getElementById("tidakHadirCount");
-            const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
 
-            const hadirCount = savedWishes.filter(w => w.attendance === "hadir").length;
-            const tidakHadirCount = savedWishes.filter(w => w.attendance !== "hadir").length;
-            const totalPax = savedWishes.filter(w => w.attendance === "hadir").reduce((sum, w) => {
+            const hadirCount = wishesArray.filter(w => w.attendance === "hadir").length;
+            const tidakHadirCount = wishesArray.filter(w => w.attendance !== "hadir").length;
+            const totalPax = wishesArray.filter(w => w.attendance === "hadir").reduce((sum, w) => {
                 const paxNum = parseInt(w.pax) || 0;
                 return sum + paxNum;
             }, 0);
 
-            countEl.innerText = `${savedWishes.length} UCAPAN`;
+            countEl.innerText = `${wishesArray.length} UCAPAN`;
             hadirEl.innerText = `${hadirCount} Hadir (${totalPax} pax)`;
             tidakHadirEl.innerText = `${tidakHadirCount} Tidak Hadir`;
 
-            listEl.innerHTML = savedWishes.map(w => `
+            listEl.innerHTML = wishesArray.map(w => `
                 <div class="bg-white/50 border border-gold/20 rounded-lg p-3 space-y-1 text-left transition-all duration-300 hover:border-gold/40 shadow-sm">
                     <div class="flex justify-between items-center border-b border-gold/10 pb-1 select-none">
                         <span class="font-sans text-[10px] font-bold text-navy">${w.name}</span>
@@ -800,6 +831,34 @@
             `).join("");
         };
 
+        // Initialize and listen to data changes
+        const initGuestbook = () => {
+            if (useFirebase) {
+                // Real-time Firestore sync
+                db.collection("wishes").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
+                    const wishes = [];
+                    snapshot.forEach((doc) => {
+                        wishes.push(doc.data());
+                    });
+                    renderWishesList(wishes);
+                }, (error) => {
+                    console.error("Firestore onSnapshot error:", error);
+                });
+            } else {
+                // Fallback to LocalStorage
+                if (!localStorage.getItem("weddingWishes")) {
+                    localStorage.setItem("weddingWishes", JSON.stringify([]));
+                }
+                const loadLocalStorage = () => {
+                    const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
+                    renderWishesList(savedWishes);
+                };
+                loadLocalStorage();
+                // Listen to local storage changes for same-tab updates (we call it manually on submit)
+                window.refreshLocalWishes = loadLocalStorage;
+            }
+        };
+
         const handleRSVPSubmit = (e) => {
             e.preventDefault();
             const guestName = document.getElementById("guestName").value;
@@ -808,7 +867,7 @@
             const pax = document.getElementById("pax").value;
             const wishesText = document.getElementById("wishes").value;
 
-            // Save new guest wish
+            // Form wish object
             const newWish = {
                 name: guestName,
                 attendance: attendance,
@@ -816,15 +875,30 @@
                 text: wishesText || "Selamat pengantin baru, moga dikurniakan kebahagiaan berpanjangan."
             };
 
-            const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
-            savedWishes.unshift(newWish);
-            localStorage.setItem("weddingWishes", JSON.stringify(savedWishes));
+            if (useFirebase) {
+                // Save to Firebase Firestore
+                db.collection("wishes").add({
+                    ...newWish,
+                    phone: guestPhone, // Include phone number only in database for privacy
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(() => {
+                    console.log("RSVP submitted to Firebase successfully!");
+                }).catch((error) => {
+                    console.error("Error submitting RSVP to Firebase:", error);
+                    alert("Gagal menghantar RSVP. Sila cuba lagi.");
+                });
+            } else {
+                // Save to LocalStorage
+                const savedWishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
+                // Store serializable timestamp for localstorage
+                newWish.timestamp = Date.now();
+                savedWishes.unshift(newWish);
+                localStorage.setItem("weddingWishes", JSON.stringify(savedWishes));
+                if (window.refreshLocalWishes) window.refreshLocalWishes();
+            }
 
             // Close drawers
             closeAllDrawers();
-
-            // Refresh guesses list
-            renderWishes();
 
             // Reset form
             document.getElementById("rsvpForm").reset();
@@ -845,8 +919,7 @@
         };
 
         // Initialize guestbook
-        seedWishes();
-        renderWishes();
+        initGuestbook();
 
 
         // ==================== CLIPBOARD COPY FUNCTIONALITY ====================
